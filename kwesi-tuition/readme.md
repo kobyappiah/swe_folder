@@ -9,3 +9,6 @@ Commit changes
 
 Push changes
 `git push origin main`
+
+Pull changes
+`git pull`
