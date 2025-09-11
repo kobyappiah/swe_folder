@@ -1,0 +1,27 @@
+# print("hello worldioo")
+# print ("i love my coding")
+
+# name= kwesi
+# age =30
+# is_male = True 
+# height = 1.75
+
+# if age > 18 and not is_male
+# print("you are a adult male")
+
+
+
+mark = int (input("enter your rating to a value between 0-10"))
+
+grade = ""
+
+if mark >=8 and mark <10:
+   grade ="excellent"
+elif mark >=5 and mark <8:
+   grade = "good"
+elif mark >=3 and mark <5:
+   grade = "average" 
+elif mark >=0 and mark <3:
+   
+
+

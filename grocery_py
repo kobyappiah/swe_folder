@@ -1,0 +1,21 @@
+
+print("welcome to my new grocery shopping list")
+
+
+def add_item(): 
+    grocery_list  = []
+    
+    
+    while True:
+        item = input("enter your item:  ")
+        grocery_list.append(item)
+
+        for i in enumerate(grocery_list, start=1): 
+            print(f'{i}')
+
+        choice = input('would you like to add another item: ')
+
+        if choice != 'yes': 
+            break
+
+add_item()

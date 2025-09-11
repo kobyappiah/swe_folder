@@ -1,0 +1,37 @@
+
+print(' welcome to the BMC client shopping platform')
+
+stock = { 
+    "paracetamol" : 50,
+    "codeine" : 300,
+    "diclofenac" : 250,
+    "stugeron" : 100,
+}
+def shop(stock) : 
+    menu =""
+    for key in stock:
+        menu += f" - {key}\n"
+    
+    print(menu)
+    item_list = ''
+    total = 0 
+
+    while True:
+        item_name = input("enter the name of the drug you want:  ")
+        item_qty = int(input("enter the quantity you want:  "))
+        
+        item_amount = stock[item_name] * item_qty 
+        total += item_amount
+
+        item_row = f"{item_name} x {item_qty} -> {item_amount}\n"
+        item_list += item_row
+
+        choice = input("would you like to add another item: ")
+
+        if choice != 'yes':
+            break
+
+    print(item_list, f" {'-'* 50}")
+
+
+shop(stock)
