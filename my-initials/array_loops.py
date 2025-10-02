@@ -118,6 +118,14 @@ while True:
         except ValueError:
             print("invalid input.Please enter a number.")
         
+    elif choice == "3":
+        try:
+            airtime = float(input("enter amount of airtime to buy: "))
+            if airtime <= 0:
+                print("Amount should be greater than zero")
+            elif airtime > BALANCE:
+                print("insufficent funds in account")
+
 
 
     #     # ask user to enter amount to send.

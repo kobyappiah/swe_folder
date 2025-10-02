@@ -1,0 +1,61 @@
+
+# colors = ['red','yellow','green']
+
+# color = input('please enter a color:  ')
+
+# if color == 'red':
+#     print('stop')
+# elif color == 'yellow':
+#     print('get ready')
+# elif color == 'green':
+#     print('Go')
+# else:
+#     print('invalid color')
+
+# num1 = int(input('enter a first number:  '))
+
+# num2 = int(input('enter a second number:  '))
+
+# addition = num1 + num2
+# print('addition:', addition)
+# subtraction = num1 - num2
+# print('subtraction of the number:', )
+# # multiplication = num1 * num2
+# # print('multiplication of the two number:', muliplication)
+# # division = num1 / num2
+# # print('division of the two numbers:', division )
+
+
+# num1 = int(input('enter a first number:  '))
+
+# num2 = int(input('enter a second number:  '))
+
+
+
+print('1. adddition')
+print('2. subtraction')
+print('3. multiplication')
+print('4. division')
+
+num1 = int(input('enter a first number:  '))
+
+num2 = int(input('enter a second number:  '))
+
+choice = input('select an option:  ')
+
+if choice == '1':
+    addition = num1 + num2 
+    print('addition:', addition)
+elif choice == '2':
+    subtraction = num1 - num2
+    print('subtraction:', subtraction)
+elif choice == '3':
+    multiplication = num1 * num2
+    print('multiplication:', multiplication)
+elif choice == '4':
+    division = num1/num2
+    if num1 == 0:
+        print('invalid entry')
+    else:
+        print('division:', division)
+

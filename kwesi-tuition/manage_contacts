@@ -1,0 +1,72 @@
+
+# ef manage_contacts():
+
+#     contacts ={}
+
+#     print('welcome to our SMART DIRECTORY')
+#     print('you can choose from the following options: ')
+
+#     print('1. add a new contact')
+#     print('2. Remove an old contact')
+#     print('3. search for a contact')
+#     print('4. print all contacts')
+   
+#     choice = int(input('enter your choice:  '))
+
+#     if choice == 1:
+
+#         name = input('enter a name:  ')
+#         phone_number = input('enter a phone number: ')
+#         contacts[name] = phone_number
+#         print('contact succesfully added:', contact_dict)
+        
+    
+# manage_contacts()d
+
+def manage_contacts():
+    contact_dict = {}
+
+    # print('Welcome to our SMART DIRECTORY')
+    # print('You can choose from the following options:')
+    # print('1. Add a new contact')
+    # print('2. Remove an old contact')
+    # print('3. Search for a contact')
+    # print('4. Print all contacts')
+
+    while True:
+    
+        choice = int(input('Enter your choice:  '))
+        
+
+        if choice == 1:
+            name = input('Enter a name:  ')
+            phone_number = input('Enter a phone number: ')
+            contact_dict[name] = phone_number
+            print('Contact successfully added:', contact_dict)
+        elif choice == 4:
+
+            for name in contact_dict:
+                print(f"{name}: {contact_dict[name]}")
+
+            
+        elif choice == 2:
+
+            name = input('enter a name of contact to remove:  ')
+            if name in contact_dict:
+                del contact_dict[name]
+                print(f"contact '{name}' has been removed")
+            else:
+                print(f"contact '{name}' not found")
+        
+        elif choice == 3:
+            name1 = input('enter name you wish you search:  ')
+            if name1 in contact_dict:
+                print(f"{name1} : '{contact_dict[name1]}'")
+            else:
+                print(f"contact '{name1}' not found")
+        
+        elif choice == 5:
+            print('goodbye, see you next time')
+            break
+
+manage_contacts()

@@ -15,7 +15,7 @@ while True:
     print("...........")
 
     choice = input (USSD_MENU + "\nchoose an option")
-    if choice == "1":
+    if choice == "1": 
         print(f"your balance is : {BALANCE:.2f}")
 
 #check balance
