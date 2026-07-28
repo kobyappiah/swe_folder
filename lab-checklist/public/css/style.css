@@ -50,6 +50,16 @@ h1 {
   font-style: italic;
 }
 
+.admin-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+.admin-link a {
+  color: #888;
+}
+
 label {
   display: block;
   font-weight: 600;
@@ -250,6 +260,80 @@ button {
 
 .modal-actions button {
   flex: 1;
+}
+
+h2 {
+  color: var(--blue-dark);
+  font-size: 1.1rem;
+  margin: 28px 0 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  font-size: 1rem;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.error-text {
+  color: var(--red);
+  font-style: normal;
+}
+
+.add-staff-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.add-staff-row input {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.add-staff-row button {
+  width: auto;
+  white-space: nowrap;
+}
+
+.btn-small {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  width: auto;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+th {
+  color: var(--blue-dark);
+}
+
+tr.history-row-missed td {
+  color: var(--red);
+}
+
+tr.history-row-completed td {
+  color: var(--green);
 }
 
 @media (min-width: 480px) {

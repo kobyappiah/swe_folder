@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Administrator - Laboratory Daily Routine Checklist</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<main class="page">
+
+  <section id="admin-login-view" class="card">
+    <h1>Administrator Login</h1>
+    <label for="admin-name">Name</label>
+    <input type="text" id="admin-name" autocomplete="username" />
+    <label for="admin-password">Password</label>
+    <input type="password" id="admin-password" autocomplete="current-password" />
+    <p id="admin-login-error" class="hint error-text" hidden></p>
+    <button id="admin-login-btn" class="btn-primary">Log In</button>
+  </section>
+
+  <section id="admin-dashboard-view" class="card" hidden>
+    <div class="top-row">
+      <div>
+        <h1>Administrator</h1>
+        <p id="admin-name-label" class="subtitle"></p>
+      </div>
+      <button id="admin-logout-btn" class="btn-link">Log out</button>
+    </div>
+
+    <h2>Today's Checklist</h2>
+    <div class="status-row">
+      <span id="admin-today-status" class="badge"></span>
+      <span id="admin-today-progress" class="progress-text"></span>
+    </div>
+    <div id="admin-today-items"></div>
+
+    <h2>Staff</h2>
+    <div id="staff-list"></div>
+    <div class="add-staff-row">
+      <input type="text" id="new-staff-name" placeholder="New staff member name" />
+      <button id="add-staff-btn" class="btn-primary">Add Staff</button>
+    </div>
+
+    <h2>History</h2>
+    <p class="subtitle">Last 30 working days.</p>
+    <div class="table-wrap">
+      <table id="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Completed By</th>
+            <th>Time</th>
+            <th>Before 5PM?</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

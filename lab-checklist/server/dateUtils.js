@@ -24,4 +24,16 @@ function isPastDeadline(d = new Date()) {
   return minutesSinceMidnight > 17 * 60;
 }
 
-module.exports = { toDateStr, todayStr, isWeekday, isPastDeadline };
+// Returns the last `count` weekday dates (as YYYY-MM-DD strings, newest
+// first), including today if today is a weekday.
+function generateRecentWeekdays(count, referenceDate = new Date()) {
+  const dates = [];
+  const cursor = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate());
+  while (dates.length < count) {
+    if (isWeekday(cursor)) dates.push(toDateStr(cursor));
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return dates;
+}
+
+module.exports = { toDateStr, todayStr, isWeekday, isPastDeadline, generateRecentWeekdays };

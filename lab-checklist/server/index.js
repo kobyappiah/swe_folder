@@ -6,6 +6,7 @@ const { upsertAdmin } = require('./adminSetup');
 const { router: authRouter } = require('./routes/auth');
 const staffRouter = require('./routes/staff');
 const checklistRouter = require('./routes/checklist');
+const adminHistoryRouter = require('./routes/adminHistory');
 
 // Optional: on hosted deployments where running the seed script by hand
 // isn't convenient, set ADMIN_NAME + ADMIN_PASSWORD env vars to have the
@@ -18,6 +19,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/admin', authRouter);
+app.use('/api/admin', adminHistoryRouter);
 app.use('/api/staff', staffRouter);
 app.use('/api/checklist', checklistRouter);
 

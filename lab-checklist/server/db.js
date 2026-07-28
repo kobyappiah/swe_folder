@@ -10,7 +10,8 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE,
     is_admin INTEGER NOT NULL DEFAULT 0,
-    password_hash TEXT
+    password_hash TEXT,
+    active INTEGER NOT NULL DEFAULT 1
   );
 
   CREATE TABLE IF NOT EXISTS checklist_days (
