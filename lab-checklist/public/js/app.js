@@ -33,8 +33,16 @@ function setStoredStaff(staff) {
 }
 
 async function loadStaffList() {
-  const res = await fetch('/api/staff');
-  const staff = await res.json();
+  let staff;
+  try {
+    const res = await fetch('/api/staff');
+    staff = await res.json();
+  } catch (err) {
+    loginEmptyMessage.textContent = 'Could not reach the server. Please check your connection and reload.';
+    loginEmptyMessage.hidden = false;
+    staffSelect.hidden = true;
+    return;
+  }
   staffSelect.innerHTML = '<option value="">-- Select your name --</option>';
   staff.forEach((s) => {
     const opt = document.createElement('option');
@@ -42,6 +50,7 @@ async function loadStaffList() {
     opt.textContent = s.name;
     staffSelect.appendChild(opt);
   });
+  loginEmptyMessage.textContent = 'No staff accounts have been set up yet. Please contact the Administrator.';
   loginEmptyMessage.hidden = staff.length > 0;
   staffSelect.hidden = staff.length === 0;
 }
@@ -91,9 +100,13 @@ function formatTime(isoString) {
 }
 
 async function loadToday() {
-  const res = await fetch('/api/checklist/today');
-  const data = await res.json();
-  render(data);
+  try {
+    const res = await fetch('/api/checklist/today');
+    const data = await res.json();
+    render(data);
+  } catch (err) {
+    alert('Could not reach the server. Please check your connection and reload.');
+  }
 }
 
 function render(data) {
@@ -161,18 +174,32 @@ function render(data) {
 }
 
 async function toggleItem(itemKey, checkboxEl, lateReason) {
+  if (!currentStaff) {
+    alert('Your session was reset. Please select your name again.');
+    showLoginView();
+    return;
+  }
+
   const body = { staffId: currentStaff.id };
   if (lateReason) body.lateReason = lateReason;
 
-  const res = await fetch(`/api/checklist/today/items/${itemKey}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
+  let res;
+  let data;
+  try {
+    res = await fetch(`/api/checklist/today/items/${itemKey}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    data = await res.json();
+  } catch (err) {
+    if (checkboxEl) checkboxEl.checked = !checkboxEl.checked;
+    alert('Could not reach the server. Please check your connection and try again.');
+    return;
+  }
 
   if (res.status === 422 && data.requiresLateReason) {
-    checkboxEl.checked = false;
+    if (checkboxEl) checkboxEl.checked = false;
     pendingItemKey = itemKey;
     lateReasonText.value = '';
     lateReasonOverlay.hidden = false;
@@ -180,7 +207,7 @@ async function toggleItem(itemKey, checkboxEl, lateReason) {
   }
 
   if (!res.ok) {
-    checkboxEl.checked = !checkboxEl.checked;
+    if (checkboxEl) checkboxEl.checked = !checkboxEl.checked;
     alert(data.error || 'Something went wrong.');
     return;
   }
