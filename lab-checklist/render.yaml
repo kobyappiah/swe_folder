@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: lab-checklist
+    runtime: node
+    rootDir: lab-checklist
+    plan: free
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: ADMIN_NAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
