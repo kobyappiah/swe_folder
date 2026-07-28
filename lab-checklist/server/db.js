@@ -35,7 +35,7 @@ db.exec(`
 `);
 
 // Returns the checklist_days row for the given date (YYYY-MM-DD),
-// creating it (and seeding its 11 items) on first access.
+// creating it (and seeding its items) on first access.
 function getOrCreateDay(dateStr) {
   let day = db.prepare('SELECT * FROM checklist_days WHERE date = ?').get(dateStr);
   if (!day) {

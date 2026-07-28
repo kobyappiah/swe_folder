@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laboratory Daily Routine Checklist</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<main class="page">
+
+  <section id="login-view" class="card">
+    <h1>Laboratory Daily Routine Checklist</h1>
+    <p class="subtitle">Please select your name to continue.</p>
+    <label for="staff-select">Staff Member</label>
+    <select id="staff-select">
+      <option value="">-- Select your name --</option>
+    </select>
+    <p id="login-empty-message" class="hint" hidden>
+      No staff accounts have been set up yet. Please contact the Administrator.
+    </p>
+    <button id="login-btn" class="btn-primary" disabled>Continue</button>
+  </section>
+
+  <section id="checklist-view" class="card" hidden>
+    <div class="top-row">
+      <div>
+        <h1>Laboratory Daily Routine Checklist</h1>
+        <p id="today-date" class="subtitle"></p>
+      </div>
+      <div class="user-row">
+        <span id="current-user-name"></span>
+        <button id="switch-user-btn" class="btn-link">Switch user</button>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span id="status-badge" class="badge"></span>
+      <span id="progress-text" class="progress-text"></span>
+    </div>
+
+    <div id="completion-summary" class="completion-summary" hidden></div>
+
+    <div id="sections-container"></div>
+  </section>
+
+</main>
+
+<div id="late-reason-overlay" class="overlay" hidden>
+  <div class="modal">
+    <h2>Why was today's checklist not completed before 5:00 PM?</h2>
+    <textarea id="late-reason-text" rows="4" placeholder="Enter reason..."></textarea>
+    <div class="modal-actions">
+      <button id="late-reason-cancel" class="btn-secondary">Cancel</button>
+      <button id="late-reason-submit" class="btn-primary">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
