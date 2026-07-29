@@ -1,9 +1,9 @@
 const path = require('path');
-const Database = require('better-sqlite3');
+const { DatabaseSync } = require('node:sqlite');
 const { flattenItems } = require('./checklistItems');
 
-const db = new Database(path.join(__dirname, '..', 'data.sqlite'));
-db.pragma('journal_mode = WAL');
+const db = new DatabaseSync(path.join(__dirname, '..', 'data.sqlite'));
+db.exec('PRAGMA journal_mode = WAL');
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS staff (
