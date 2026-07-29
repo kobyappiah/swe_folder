@@ -34,9 +34,15 @@ function clearSession() {
   localStorage.removeItem(NAME_KEY);
 }
 
-function showLoginView() {
+function showLoginView(message) {
   loginView.hidden = false;
   dashboardView.hidden = true;
+  if (message) {
+    loginError.textContent = message;
+    loginError.hidden = false;
+  } else {
+    loginError.hidden = true;
+  }
 }
 
 function showDashboardView() {
@@ -55,7 +61,7 @@ async function adminFetch(url, options = {}) {
   const res = await fetch(url, Object.assign({}, options, { headers }));
   if (res.status === 401) {
     clearSession();
-    showLoginView();
+    showLoginView('Your session expired (often because the server restarted). Please log in again.');
     throw new Error('Session expired. Please log in again.');
   }
   return res;
