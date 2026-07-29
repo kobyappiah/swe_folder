@@ -72,7 +72,14 @@ switchUserBtn.addEventListener('click', () => {
   showLoginView();
 });
 
+function closeLateReasonModal() {
+  lateReasonOverlay.hidden = true;
+  lateReasonText.value = '';
+  pendingItemKey = null;
+}
+
 function showLoginView() {
+  closeLateReasonModal();
   loginView.hidden = false;
   checklistView.hidden = true;
   loginBtn.disabled = true;
@@ -175,8 +182,8 @@ function render(data) {
 
 async function toggleItem(itemKey, checkboxEl, lateReason) {
   if (!currentStaff) {
-    alert('Your session was reset. Please select your name again.');
     showLoginView();
+    alert('Your session was reset. Please select your name again.');
     return;
   }
 
@@ -216,8 +223,7 @@ async function toggleItem(itemKey, checkboxEl, lateReason) {
 }
 
 lateReasonCancel.addEventListener('click', () => {
-  lateReasonOverlay.hidden = true;
-  pendingItemKey = null;
+  closeLateReasonModal();
 });
 
 lateReasonSubmit.addEventListener('click', async () => {
@@ -227,8 +233,7 @@ lateReasonSubmit.addEventListener('click', async () => {
     return;
   }
   const itemKey = pendingItemKey;
-  lateReasonOverlay.hidden = true;
-  pendingItemKey = null;
+  closeLateReasonModal();
   await toggleItem(itemKey, null, reason);
 });
 
